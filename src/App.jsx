@@ -105,7 +105,56 @@ const TEXTS = {
     trends: "Trends",
     alerts: "Alerts",
     settings: "Settings",
-    logs: "Logs"
+    logs: "Logs",
+    // New user experience features
+    skillPassport: "Skill Passport",
+    discovery: "Discovery",
+    marketplace: "Marketplace",
+    activityFeed: "Activity Feed",
+    practiceSandbox: "Practice Sandbox",
+    powerLevel: "Power Level",
+    verifiedSkills: "Verified Skills",
+    skillRadar: "Skill Radar",
+    growthHistory: "Growth History",
+    voluntaryAssessments: "Voluntary Assessments",
+    practiceTests: "Practice Tests",
+    challengeTests: "Challenge Tests",
+    learningPaths: "Learning Paths",
+    trendingSkills: "Trending Skills",
+    dailyStreak: "Daily Streak",
+    upcomingMilestones: "Upcoming Milestones",
+    peerBenchmarking: "Peer Benchmarking",
+    codePlayground: "Code Playground",
+    flashcards: "Flashcards",
+    achievements: "Achievements",
+    level: "Level",
+    xp: "XP",
+    badges: "Badges",
+    streak: "Streak",
+    rank: "Rank",
+    topPercentile: "Top Percentile",
+    skillVerified: "Skill Verified",
+    takeChallenge: "Take Challenge",
+    startPractice: "Start Practice",
+    viewPath: "View Path",
+    daysInARow: "days in a row",
+    expiresIn: "expires in",
+    refreshCertification: "Refresh Certification",
+    warmUp: "Warm Up",
+    quickQuestions: "Quick Questions",
+    trendingInDepartment: "Trending in Your Department",
+    skillJourney: "Skill Journey",
+    currentLevel: "Current Level",
+    nextMilestone: "Next Milestone",
+    progressToNext: "Progress to Next",
+    totalXP: "Total XP",
+    weeklyGoal: "Weekly Goal",
+    completedToday: "Completed Today",
+    maintainStreak: "Maintain Streak",
+    unlockAchievement: "Unlock Achievement",
+    challengeYourself: "Challenge Yourself",
+    exploreSkills: "Explore Skills",
+    joinCommunity: "Join Community"
   },
   rw: {
     dashboard: "Ibibaho",
@@ -208,35 +257,85 @@ const TEXTS = {
     trends: "Imihindagurikire",
     alerts: "Iburabuzi",
     settings: "Igenamigambi",
-    logs: "Imikorere"
+    logs: "Imikorere",
+    // New user experience features
+    skillPassport: "Pasiporo y'Ubumenyi",
+    discovery: "Gusubiramo",
+    marketplace: "Ishuri",
+    activityFeed: "Imikorere",
+    practiceSandbox: "Ahagana yo Gukora",
+    powerLevel: "Urwego r'Ubuhamya",
+    verifiedSkills: "Ubumenyi Bwemejwe",
+    skillRadar: "Radar y'Ubumenyi",
+    growthHistory: "Amateka y'Iterambere",
+    voluntaryAssessments: "Ugerageza ku Gukunda",
+    practiceTests: "Ugerageza yo Gukora",
+    challengeTests: "Ugerageza zo Kwihangira",
+    learningPaths: "Inzira yo Kwiga",
+    trendingSkills: "Ubumenyi Bwiyongera",
+    dailyStreak: "Imikorira ya Buri Munsi",
+    upcomingMilestones: "Intambwe Zikagera",
+    peerBenchmarking: "Kugereranya n'Abandi",
+    codePlayground: "Ahagana yo Kwandika",
+    flashcards: "Akarita yo Gukora",
+    achievements: "Ibyagezweho",
+    level: "Urwego",
+    xp: "XP",
+    badges: "Ibendera",
+    streak: "Imikorira",
+    rank: "Icyiciro",
+    topPercentile: "Imbanziruka",
+    skillVerified: "Ubumenyi Bwemejwe",
+    takeChallenge: "Tangiza Ikiganiro",
+    startPractice: "Tangira Gukora",
+    viewPath: "Reba Inzira",
+    daysInARow: "iminsi zikurikiranye",
+    expiresIn: "izarangira",
+    refreshCertification: "Kongera Icyemezo",
+    warmUp: "Kwiyongera",
+    quickQuestions: "Ibibazo byihuta",
+    trendingInDepartment: "Bwiyongera muri Ishami Ryawe",
+    skillJourney: "Inzira y'Ubumenyi",
+    currentLevel: "Urwego Haracyari",
+    nextMilestone: "Intambbe Ikurikira",
+    progressToNext: "Aho Wigeze",
+    totalXP: "XP Zose",
+    weeklyGoal: "Intego y'Icyumweru",
+    completedToday: "Byageze Uyu Munsi",
+    maintainStreak: "Kubika Imikorira",
+    unlockAchievement: "Fungura Ibyagezweho",
+    challengeYourself: "Kwihangira",
+    exploreSkills: "Gusubiramo Ubumenyi",
+    joinCommunity: "Injira muri Itsinda"
   }
 };
 
 function Sidebar({ current, onNavigate, t, isAdmin }) {
-  const links = [
-    { key: "dashboard", label: t.dashboard, icon: LayoutDashboard },
+  const userLinks = [
+    { key: "skillPassport", label: t.skillPassport, icon: User },
+    { key: "discovery", label: t.discovery, icon: Search },
+    { key: "activityFeed", label: t.activityFeed, icon: Activity },
+    { key: "practiceSandbox", label: t.practiceSandbox, icon: Code },
     { key: "skillsMatrix", label: t.skillsMatrix, icon: Table2 },
-    { key: "employeeDirectory", label: t.employeeDirectory, icon: Users },
     { key: "learningPaths", label: t.learningPaths, icon: GraduationCap },
-    { key: "assessmentCenter", label: t.assessmentCenter, icon: Brain },
-    { key: "skillGapAnalysis", label: t.skillGapAnalysis, icon: BarChart3 }
+    { key: "assessmentCenter", label: t.assessmentCenter, icon: Brain }
   ];
-  
-  if (isAdmin) {
-    links.push(
-      { key: "adminDashboard", label: t.adminDashboard, icon: BarChart3 },
-      { key: "userManagement", label: t.userManagement, icon: Users },
-      { key: "courseManagement", label: t.courseManagement, icon: BookOpen },
-      { key: "employeeManagement", label: t.employeeManagement, icon: Users },
-      { key: "departmentManagement", label: t.departmentManagement, icon: Building },
-      { key: "skillsManagement", label: t.skillsManagement, icon: GraduationCap },
-      { key: "integrations", label: t.integrations, icon: Shield },
-      { key: "contentLibrary", label: t.contentLibrary, icon: BookOpen },
-      { key: "benchmarking", label: t.benchmarking, icon: Target },
-      { key: "reports", label: t.reports, icon: BarChart3 },
-      { key: "auditLog", label: t.auditLog, icon: Shield }
-    );
-  }
+
+  const adminLinks = [
+    { key: "adminDashboard", label: t.adminDashboard, icon: BarChart3 },
+    { key: "userManagement", label: t.userManagement, icon: Users },
+    { key: "courseManagement", label: t.courseManagement, icon: BookOpen },
+    { key: "employeeManagement", label: t.employeeManagement, icon: Users },
+    { key: "departmentManagement", label: t.departmentManagement, icon: Building },
+    { key: "skillsManagement", label: t.skillsManagement, icon: GraduationCap },
+    { key: "integrations", label: t.integrations, icon: Shield },
+    { key: "contentLibrary", label: t.contentLibrary, icon: BookOpen },
+    { key: "benchmarking", label: t.benchmarking, icon: Target },
+    { key: "reports", label: t.reports, icon: BarChart3 },
+    { key: "auditLog", label: t.auditLog, icon: Shield }
+  ];
+
+  const links = isAdmin ? [...userLinks, ...adminLinks] : userLinks;
   
   return (
     <aside className="w-64 h-full border-r border-gray-200 bg-white">
@@ -1718,81 +1817,124 @@ function UserManagement({ t, employees, setEmployees, departments }) {
 }
 
 function CourseManagement({ t }) {
-  const [courses, setCourses] = useState([
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.courseManagement}</h2>
+      </div>
+      <div className="card p-6">
+        <p>Course management functionality coming soon...</p>
+      </div>
+    </div>
+  );
+}
+
+function SkillPassport({ t, employees }) {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.skillPassport}</h2>
+      </div>
+      <div className="card p-6">
+        <p>Skill passport functionality coming soon...</p>
+      </div>
+    </div>
+  );
+}
+
+function Discovery({ t }) {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.discovery} {t.marketplace}</h2>
+      </div>
+      <div className="card p-6">
+        <p>Discovery marketplace functionality coming soon...</p>
+      </div>
+    </div>
+  );
+}
+
+function ActivityFeed({ t }) {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.activityFeed}</h2>
+      </div>
+      <div className="card p-6">
+        <p>Activity feed functionality coming soon...</p>
+      </div>
+    </div>
+  );
+}
+
+function PracticeSandbox({ t }) {
+  const [activeTab, setActiveTab] = useState("playground");
+  const [code, setCode] = useState("// Welcome to the Code Playground!\n// Try out your JavaScript, Python, or other code here\n\nfunction hello(name) {\n  return `Hello, ${name}!`;\n}\n\nconsole.log(hello('World'));");
+  const [language, setLanguage] = useState("javascript");
+  const [currentFlashcard, setCurrentFlashcard] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
+
+  const flashcards = [
     {
       id: 1,
-      name: "JavaScript Fundamentals",
-      description: "Learn the basics of JavaScript programming",
-      enrolled: 45,
-      completed: 32,
-      avgScore: 4.2,
-      status: "active",
-      category: "Technical"
+      question: "What is the time complexity of binary search?",
+      answer: "O(log n) - Binary search divides the search space in half with each iteration",
+      category: "Algorithms",
+      difficulty: "Medium"
     },
     {
       id: 2,
-      name: "Leadership Excellence",
-      description: "Develop essential leadership skills",
-      enrolled: 38,
-      completed: 25,
-      avgScore: 3.9,
-      status: "active",
-      category: "Soft Skills"
+      question: "What is the difference between let and const in JavaScript?",
+      answer: "let allows reassignment, const creates a read-only reference. Both are block-scoped.",
+      category: "JavaScript",
+      difficulty: "Easy"
     },
     {
       id: 3,
-      name: "Data Analysis Basics",
-      description: "Introduction to data analysis techniques",
-      enrolled: 32,
-      completed: 20,
-      avgScore: 3.7,
-      status: "active",
-      category: "Technical"
+      question: "What is a REST API?",
+      answer: "A REST API is an architectural style for designing networked applications using HTTP requests to access and use data.",
+      category: "Web Development",
+      difficulty: "Medium"
     },
     {
       id: 4,
-      name: "Python Programming",
-      description: "Comprehensive Python programming course",
-      enrolled: 28,
-      completed: 15,
-      avgScore: 3.5,
-      status: "inactive",
-      category: "Technical"
+      question: "What is the purpose of a database index?",
+      answer: "A database index improves the speed of data retrieval operations on a database table.",
+      category: "Databases",
+      difficulty: "Medium"
+    },
+    {
+      id: 5,
+      question: "What is the difference between synchronous and asynchronous code?",
+      answer: "Synchronous code runs sequentially, blocking execution until completion. Asynchronous code allows other operations to continue while waiting for long-running tasks.",
+      category: "Programming Concepts",
+      difficulty: "Easy"
     }
-  ]);
+  ];
 
-  const [showAddCourse, setShowAddCourse] = useState(false);
-  const [newCourse, setNewCourse] = useState({
-    name: "",
-    description: "",
-    category: "Technical"
-  });
+  const codeTemplates = [
+    { name: "JavaScript Function", code: "function greet(name) {\n  return `Hello, ${name}!`;\n}\n\nconsole.log(greet('Developer'));" },
+    { name: "Python Class", code: "class Person:\n    def __init__(self, name):\n        self.name = name\n    \n    def greet(self):\n        return f'Hello, {self.name}!'\n\np = Person('Alice')\nprint(p.greet())" },
+    { name: "React Component", code: "import React from 'react';\n\nfunction Welcome({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n\nexport default Welcome;" },
+    { name: "SQL Query", code: "SELECT name, email\nFROM users\nWHERE created_at >= '2024-01-01'\nORDER BY name;" }
+  ];
 
-  const handleAddCourse = () => {
-    const course = {
-      id: Math.max(...courses.map(c => c.id)) + 1,
-      ...newCourse,
-      enrolled: 0,
-      completed: 0,
-      avgScore: 0,
-      status: "active"
-    };
-    setCourses(prev => [...prev, course]);
-    setNewCourse({ name: "", description: "", category: "Technical" });
-    setShowAddCourse(false);
+  const handleNextFlashcard = () => {
+    setShowAnswer(false);
+    setCurrentFlashcard((prev) => (prev + 1) % flashcards.length);
   };
 
-  const getStatusColor = (status) => {
-    return status === "active" 
-      ? "bg-green-100 text-green-800" 
-      : "bg-gray-100 text-gray-800";
+  const handlePreviousFlashcard = () => {
+    setShowAnswer(false);
+    setCurrentFlashcard((prev) => (prev - 1 + flashcards.length) % flashcards.length);
   };
 
-  const getCategoryColor = (category) => {
-    switch (category) {
-      case "Technical": return "bg-blue-100 text-blue-800";
-      case "Soft Skills": return "bg-purple-100 text-purple-800";
-      case "Management": return "bg-orange-100 text-orange-800";
+  const getDifficultyColor = (difficulty) => {
+    switch (difficulty) {
+      case "Easy": return "bg-green-100 text-green-800";
+      case "Medium": return "bg-yellow-100 text-yellow-800";
+      case "Hard": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
     }
   };
@@ -1800,159 +1942,235 @@ function CourseManagement({ t }) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">{t.courseManagement}</h2>
+        <h2 className="text-xl font-semibold">{t.practiceSandbox}</h2>
+        <div className="flex gap-2">
+          <button className="btn btn-primary">
+            <Code className="h-4 w-4" />
+            {t.warmUp}
+          </button>
+        </div>
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="flex gap-2 border-b">
         <button
-          onClick={() => setShowAddCourse(true)}
-          className="btn btn-primary"
+          onClick={() => setActiveTab("playground")}
+          className={`px-4 py-2 font-medium border-b-2 transition ${
+            activeTab === "playground"
+              ? "border-gray-800 text-gray-800"
+              : "border-transparent text-gray-600 hover:text-gray-800"
+          }`}
         >
-          <Plus className="h-4 w-4" />
-          Add Course
+          {t.codePlayground}
+        </button>
+        <button
+          onClick={() => setActiveTab("flashcards")}
+          className={`px-4 py-2 font-medium border-b-2 transition ${
+            activeTab === "flashcards"
+              ? "border-gray-800 text-gray-800"
+              : "border-transparent text-gray-600 hover:text-gray-800"
+          }`}
+        >
+          {t.flashcards}
         </button>
       </div>
 
-      {/* Course Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="card p-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold">{courses.length}</p>
-            <p className="text-sm text-gray-600">{t.totalCourses}</p>
-          </div>
-        </div>
-        <div className="card p-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold">{courses.reduce((sum, c) => sum + c.enrolled, 0)}</p>
-            <p className="text-sm text-gray-600">Total Enrolled</p>
-          </div>
-        </div>
-        <div className="card p-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold">{courses.reduce((sum, c) => sum + c.completed, 0)}</p>
-            <p className="text-sm text-gray-600">Total Completed</p>
-          </div>
-        </div>
-        <div className="card p-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold">
-              {(courses.reduce((sum, c) => sum + c.completed, 0) / courses.reduce((sum, c) => sum + c.enrolled, 0) * 100).toFixed(1)}%
-            </p>
-            <p className="text-sm text-gray-600">{t.completionRate}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Courses Table */}
-      <div className="card overflow-auto">
-        <table className="min-w-full border-collapse">
-          <thead>
-            <tr>
-              <th className="text-left p-3 border-b">Course Name</th>
-              <th className="text-left p-3 border-b">Category</th>
-              <th className="text-left p-3 border-b">Enrolled</th>
-              <th className="text-left p-3 border-b">Completed</th>
-              <th className="text-left p-3 border-b">Avg Score</th>
-              <th className="text-left p-3 border-b">Status</th>
-              <th className="text-left p-3 border-b">{t.actions}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((course) => (
-              <tr key={course.id} className="border-b">
-                <td className="p-3">
-                  <div>
-                    <div className="font-medium">{course.name}</div>
-                    <div className="text-sm text-gray-600">{course.description}</div>
-                  </div>
-                </td>
-                <td className="p-3">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${getCategoryColor(course.category)}`}>
-                    {course.category}
-                  </span>
-                </td>
-                <td className="p-3">{course.enrolled}</td>
-                <td className="p-3">{course.completed}</td>
-                <td className="p-3">
-                  <div className={`rounded-md text-center text-sm px-2 py-1 inline-block ${
-                    course.avgScore <= 1 ? "bg-red-500 text-white" :
-                    course.avgScore <= 2 ? "bg-orange-500 text-white" :
-                    course.avgScore <= 3 ? "bg-yellow-400 text-gray-900" :
-                    course.avgScore <= 4 ? "bg-green-400 text-gray-900" :
-                    "bg-green-600 text-white"
-                  }`}>
-                    {course.avgScore}
-                  </div>
-                </td>
-                <td className="p-3">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(course.status)}`}>
-                    {course.status}
-                  </span>
-                </td>
-                <td className="p-3">
-                  <div className="flex gap-2">
-                    <button className="btn" title="Edit">
-                      <Edit2 className="h-4 w-4" />
-                    </button>
-                    <button className="btn text-red-600 hover:text-red-800" title="Delete">
-                      <Trash2 className="h-4 w-4" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Add Course Modal */}
-      {showAddCourse && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Add New Course</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Course Name</label>
-                <input
-                  type="text"
-                  value={newCourse.name}
-                  onChange={(e) => setNewCourse({ ...newCourse, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Description</label>
-                <textarea
-                  value={newCourse.description}
-                  onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                  rows={3}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Category</label>
+      {/* Code Playground Tab */}
+      {activeTab === "playground" && (
+        <div className="space-y-6">
+          <div className="card p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold">{t.codePlayground}</h3>
+              <div className="flex items-center gap-2">
                 <select
-                  value={newCourse.category}
-                  onChange={(e) => setNewCourse({ ...newCourse, category: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="px-3 py-2 border border-gray-300 rounded-md"
                 >
-                  <option value="Technical">Technical</option>
-                  <option value="Soft Skills">Soft Skills</option>
-                  <option value="Management">Management</option>
+                  <option value="javascript">JavaScript</option>
+                  <option value="python">Python</option>
+                  <option value="react">React</option>
+                  <option value="sql">SQL</option>
                 </select>
+                <button className="btn btn-primary">
+                  <Play className="h-4 w-4" />
+                  Run Code
+                </button>
               </div>
             </div>
-            <div className="flex justify-end gap-2 mt-6">
-              <button
-                onClick={() => setShowAddCourse(false)}
-                className="btn"
-              >
-                {t.cancel}
-              </button>
-              <button
-                onClick={handleAddCourse}
-                className="btn btn-primary"
-                disabled={!newCourse.name}
-              >
-                {t.save}
-              </button>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium">Code Editor</label>
+                  <button className="text-sm text-blue-600 hover:text-blue-800">
+                    <Copy className="h-4 w-4 inline mr-1" />
+                    Copy
+                  </button>
+                </div>
+                <div className="border rounded-lg">
+                  <textarea
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    className="w-full h-64 p-3 font-mono text-sm border-none rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Write your code here..."
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium">Output</label>
+                  <button className="text-sm text-gray-600 hover:text-gray-800">
+                    <Trash2 className="h-4 w-4 inline mr-1" />
+                    Clear
+                  </button>
+                </div>
+                <div className="border rounded-lg h-64 p-3 bg-gray-50 font-mono text-sm">
+                  <div className="text-gray-500">// Output will appear here...</div>
+                  <div className="text-green-600 mt-2">Hello, World!</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <h4 className="font-medium mb-2">Quick Templates:</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                {codeTemplates.map((template, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCode(template.code)}
+                    className="p-2 text-sm border rounded hover:bg-gray-50 text-left"
+                  >
+                    {template.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="card p-6 bg-blue-50 border-blue-200">
+            <h3 className="text-lg font-semibold mb-2">Practice Tips</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h4 className="font-medium mb-1">💡 Experiment Freely</h4>
+                <p className="text-gray-600">This is a safe space to try new code without any pressure.</p>
+              </div>
+              <div>
+                <h4 className="font-medium mb-1">🎯 Focus on Fundamentals</h4>
+                <p className="text-gray-600">Practice basic concepts before moving to complex problems.</p>
+              </div>
+              <div>
+                <h4 className="font-medium mb-1">🔄 Iterate and Improve</h4>
+                <p className="text-gray-600">Refactor your code to make it more efficient and readable.</p>
+              </div>
+              <div>
+                <h4 className="font-medium mb-1">📚 Learn from Examples</h4>
+                <p className="text-gray-600">Use templates and modify them to understand different patterns.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Flashcards Tab */}
+      {activeTab === "flashcards" && (
+        <div className="space-y-6">
+          <div className="card p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-semibold">{t.flashcards} - {t.quickQuestions}</h3>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600">
+                  {currentFlashcard + 1} of {flashcards.length}
+                </span>
+              </div>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <div className="card p-8 bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+                <div className="text-center">
+                  <div className="mb-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getDifficultyColor(flashcards[currentFlashcard].difficulty)}`}>
+                      {flashcards[currentFlashcard].difficulty}
+                    </span>
+                    <span className="ml-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                      {flashcards[currentFlashcard].category}
+                    </span>
+                  </div>
+                  
+                  <h4 className="text-xl font-semibold mb-6">
+                    {flashcards[currentFlashcard].question}
+                  </h4>
+
+                  {!showAnswer ? (
+                    <button
+                      onClick={() => setShowAnswer(true)}
+                      className="btn btn-primary"
+                    >
+                      <Eye className="h-4 w-4 mr-2" />
+                      Show Answer
+                    </button>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-white rounded-lg border">
+                        <p className="text-gray-700">{flashcards[currentFlashcard].answer}</p>
+                      </div>
+                      
+                      <div className="flex items-center justify-center gap-4">
+                        <button
+                          onClick={handlePreviousFlashcard}
+                          className="btn"
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                          Previous
+                        </button>
+                        <button
+                          onClick={handleNextFlashcard}
+                          className="btn btn-primary"
+                        >
+                          Next
+                          <ChevronRight className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6 flex justify-center gap-2">
+                {flashcards.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentFlashcard(index);
+                      setShowAnswer(false);
+                    }}
+                    className={`w-2 h-2 rounded-full ${
+                      index === currentFlashcard
+                        ? "bg-blue-600"
+                        : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 card p-6 bg-green-50 border-green-200">
+              <h3 className="text-lg font-semibold mb-4">Study Tips</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <h4 className="font-medium mb-1">🧠 Active Recall</h4>
+                  <p className="text-gray-600">Try to answer before revealing the solution.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">⏰ Spaced Repetition</h4>
+                  <p className="text-gray-600">Review cards at increasing intervals for better retention.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">🎯 Focus on Weak Areas</h4>
+                  <p className="text-gray-600">Spend more time on topics you find challenging.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1964,8 +2182,8 @@ function CourseManagement({ t }) {
 export default function App() {
   const [lang, setLang] = useState("en");
   const t = TEXTS[lang];
-  const [page, setPage] = useState("dashboard");
-  const [isAdmin, setIsAdmin] = useState(true); // For demo purposes, set to true
+  const [page, setPage] = useState("skillPassport");
+  const [isAdmin, setIsAdmin] = useState(false); // Start as normal user
   const [departmentsState, setDepartmentsState] = useState(departments);
   const [employeesState, setEmployeesState] = useState(employees);
   const [skillsState, setSkillsState] = useState(skills);
@@ -1976,12 +2194,16 @@ export default function App() {
       <main className="flex-1 p-6 space-y-6">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-semibold text-gray-900">
+            {page === "skillPassport" && t.skillPassport}
+            {page === "discovery" && `${t.discovery} ${t.marketplace}`}
+            {page === "activityFeed" && t.activityFeed}
+            {page === "practiceSandbox" && t.practiceSandbox}
             {page === "dashboard" && t.dashboard}
             {page === "adminDashboard" && t.adminDashboard}
-            {page === "skillsMatrix" && t.skillsMatrix}
-            {page === "employeeDirectory" && t.employeeDirectory}
             {page === "userManagement" && t.userManagement}
             {page === "courseManagement" && t.courseManagement}
+            {page === "skillsMatrix" && t.skillsMatrix}
+            {page === "employeeDirectory" && t.employeeDirectory}
             {page === "employeeManagement" && t.employeeManagement}
             {page === "learningPaths" && t.learningPaths}
             {page === "departmentManagement" && t.departmentManagement}
@@ -2015,6 +2237,10 @@ export default function App() {
             </button>
           </div>
         </div>
+        {page === "skillPassport" && <SkillPassport t={t} employees={employeesState} />}
+        {page === "discovery" && <Discovery t={t} />}
+        {page === "activityFeed" && <ActivityFeed t={t} />}
+        {page === "practiceSandbox" && <PracticeSandbox t={t} />}
         {page === "dashboard" && <Dashboard t={t} />}
         {page === "adminDashboard" && <AdminDashboard t={t} employees={employeesState} departments={departmentsState} skillsList={skillsState} />}
         {page === "userManagement" && <UserManagement t={t} employees={employeesState} setEmployees={setEmployeesState} departments={departmentsState} />}
