@@ -342,11 +342,19 @@ function Sidebar({ current, onNavigate, t, isAdmin }) {
   const links = isAdmin ? [...userLinks, ...adminLinks] : userLinks;
   
   return (
-    <aside className="w-64 h-full border-r border-gray-200 bg-white">
+    <aside className="w-64 h-full border-r border-gray-300 bg-white">
       <div className="p-4">
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-gray-800" />
-          <span className="text-lg font-semibold text-gray-900">Ganza Skills</span>
+        <div className="flex items-center gap-3">
+          {/* Ganza Skills Logo */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">G</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-gray-900">Ganza</span>
+              <span className="text-sm font-medium text-gray-600">Skills</span>
+            </div>
+          </div>
         </div>
       </div>
       <nav className="px-2 space-y-1">
