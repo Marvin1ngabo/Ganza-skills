@@ -1925,9 +1925,9 @@ function SkillPassport({ t, employees }) {
         </div>
       </div>
 
-      {/* Stats Grid - Professional black and grey theme */}
+      {/* Stats Grid - Professional subtle colors */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="card p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+        <div className="card p-4 bg-gray-800 text-white">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.dailyStreak}</p>
@@ -1938,7 +1938,7 @@ function SkillPassport({ t, employees }) {
           </div>
         </div>
 
-        <div className="card p-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+        <div className="card p-4 bg-gray-700 text-white">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.weeklyGoal}</p>
@@ -1949,7 +1949,7 @@ function SkillPassport({ t, employees }) {
           </div>
         </div>
 
-        <div className="card p-4 bg-gradient-to-r from-green-500 to-teal-500 text-white">
+        <div className="card p-4 bg-gray-600 text-white">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.completedToday}</p>
@@ -1960,7 +1960,7 @@ function SkillPassport({ t, employees }) {
           </div>
         </div>
 
-        <div className="card p-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+        <div className="card p-4 bg-gray-900 text-white">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.totalXP}</p>
