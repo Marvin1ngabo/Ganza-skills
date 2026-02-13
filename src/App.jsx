@@ -1899,35 +1899,35 @@ function SkillPassport({ t, employees }) {
         </button>
       </div>
 
-      {/* User Profile Header - Matching the image design */}
+      {/* User Profile Header - Matching the image design with new colors */}
       <div className="card p-6">
         <div className="flex items-center gap-6">
           {/* Profile Avatar */}
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+          <div className="w-20 h-20 skill-radar-active rounded-full flex items-center justify-center text-black text-2xl font-bold">
             JD
           </div>
           
           {/* User Info */}
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-gray-900">John Doe</h3>
-            <p className="text-lg text-gray-600 mb-2">Level {userStats.level} • {userStats.rank}</p>
+            <h3 className="text-2xl font-bold text-gray-100">John Doe</h3>
+            <p className="text-lg text-gray-400 mb-2">Level {userStats.level} • {userStats.rank}</p>
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <Zap className="h-5 w-5 text-yellow-500" />
-                <span className="font-semibold text-lg">{userStats.totalXP} XP</span>
+                <Zap className="h-5 w-5 text-cyan-400" />
+                <span className="font-semibold text-lg text-gray-100">{userStats.totalXP} XP</span>
               </div>
               <div className="flex items-center gap-2">
-                <Flame className="h-5 w-5 text-orange-500" />
-                <span className="font-semibold text-lg">{userStats.streak} Day Streak</span>
+                <Flame className="h-5 w-5 text-orange-400" />
+                <span className="font-semibold text-lg text-gray-100">{userStats.streak} Day Streak</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Stats Grid - Matching the image layout */}
+      {/* Stats Grid - Matching the image layout with new colors */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="card p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+        <div className="card p-4 stats-gradient-cyan">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.dailyStreak}</p>
@@ -1938,7 +1938,7 @@ function SkillPassport({ t, employees }) {
           </div>
         </div>
 
-        <div className="card p-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+        <div className="card p-4 stats-gradient-mint">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.weeklyGoal}</p>
@@ -1949,7 +1949,7 @@ function SkillPassport({ t, employees }) {
           </div>
         </div>
 
-        <div className="card p-4 bg-gradient-to-r from-green-500 to-teal-500 text-white">
+        <div className="card p-4 stats-gradient-cyan">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.completedToday}</p>
@@ -1960,7 +1960,7 @@ function SkillPassport({ t, employees }) {
           </div>
         </div>
 
-        <div className="card p-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+        <div className="card p-4 stats-gradient-grey">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm opacity-90">{t.totalXP}</p>
@@ -1981,29 +1981,41 @@ function SkillPassport({ t, employees }) {
               <div key={index} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <div className={`w-12 h-12 rounded-full ${getSkillBgColor(skill.level)} flex items-center justify-center`}>
-                      <span className={`text-lg font-bold ${getSkillColor(skill.level)}`}>
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                      skill.verified 
+                        ? 'skill-radar-active' 
+                        : skill.level >= 3 
+                          ? 'skill-radar-active' 
+                          : 'skill-radar-inactive'
+                    }`}>
+                      <span className={`text-lg font-bold ${
+                        skill.verified || skill.level >= 3 ? 'text-black' : 'text-gray-400'
+                      }`}>
                         {skill.level.toFixed(1)}
                       </span>
                     </div>
                     {skill.verified && (
-                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
-                        <Check className="h-2 w-2 text-white" />
+                      <div className="absolute -top-1 -right-1 w-4 h-4 verified-badge rounded-full flex items-center justify-center">
+                        <Check className="h-2 w-2 text-black" />
                       </div>
                     )}
                   </div>
                   <div>
                     <div className="font-medium">{skill.skill}</div>
-                    <div className="text-sm text-gray-600">{skill.category}</div>
+                    <div className="text-sm text-gray-400">{skill.category}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   {skill.verified && (
-                    <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">
+                    <span className="px-2 py-1 verified-badge rounded text-xs font-medium">
                       {t.verified}
                     </span>
                   )}
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${getSkillBgColor(skill.level)} ${getSkillColor(skill.level)}`}>
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${
+                    skill.level >= 3 
+                      ? 'skill-radar-active' 
+                      : 'skill-radar-inactive'
+                  }`}>
                     Level {Math.floor(skill.level)}
                   </span>
                 </div>
@@ -2049,15 +2061,15 @@ function SkillPassport({ t, employees }) {
               key={achievement.id}
               className={`p-4 border rounded-lg text-center ${
                 achievement.unlocked 
-                  ? "bg-white border-gray-200" 
-                  : "bg-gray-50 border-gray-200 opacity-60"
+                  ? "border-gray-600" 
+                  : "locked-skill"
               }`}
             >
               <div className="text-3xl mb-2">{achievement.icon}</div>
               <div className="font-medium text-sm">{achievement.name}</div>
-              <div className="text-xs text-gray-600 mt-1">{achievement.description}</div>
+              <div className="text-xs text-gray-400 mt-1">{achievement.description}</div>
               {achievement.unlocked && (
-                <div className="text-xs text-green-600 mt-2">✓ Unlocked</div>
+                <div className="text-xs text-green-400 mt-2">✓ Unlocked</div>
               )}
             </div>
           ))}
