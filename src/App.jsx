@@ -1834,13 +1834,254 @@ function CourseManagement({ t }) {
 }
 
 function SkillPassport({ t, employees }) {
+  // Mock current user data (in real app, this would come from auth/user context)
+  const currentUser = employees[0]; // Using first employee as example
+  
+  const userStats = {
+    level: 12,
+    totalXP: 2450,
+    streak: 7,
+    rank: "Senior Developer",
+    topPercentile: 15,
+    verifiedSkills: 8,
+    totalSkills: 12,
+    weeklyGoal: 150,
+    weeklyProgress: 89,
+    completedToday: 2
+  };
+
+  const skillData = [
+    { skill: "JavaScript", level: 4.2, verified: true, category: "Technical" },
+    { skill: "Python", level: 3.8, verified: true, category: "Technical" },
+    { skill: "React", level: 3.5, verified: false, category: "Technical" },
+    { skill: "SQL", level: 2.8, verified: false, category: "Technical" },
+    { skill: "System Design", level: 2.1, verified: false, category: "Architecture" },
+    { skill: "Leadership", level: 3.9, verified: true, category: "Soft Skills" }
+  ];
+
+  const growthHistory = [
+    { date: "2024-01", xp: 1800, level: 10, newSkills: ["Python"] },
+    { date: "2024-02", xp: 1950, level: 11, newSkills: ["React"] },
+    { date: "2024-03", xp: 2100, level: 11, newSkills: ["SQL"] },
+    { date: "2024-04", xp: 2300, level: 12, newSkills: ["Leadership"] },
+    { date: "2024-05", xp: 2450, level: 12, newSkills: [] }
+  ];
+
+  const achievements = [
+    { id: 1, name: "First Steps", description: "Complete your first assessment", icon: "🎯", unlocked: true },
+    { id: 2, name: "Week Warrior", description: "7-day streak", icon: "🔥", unlocked: true },
+    { id: 3, name: "Skill Master", description: "Verify 5 skills", icon: "🏆", unlocked: true },
+    { id: 4, name: "Team Player", description: "Help 3 colleagues", icon: "🤝", unlocked: false },
+    { id: 5, name: "Knowledge Seeker", description: "Complete 10 assessments", icon: "📚", unlocked: false }
+  ];
+
+  const getSkillColor = (level) => {
+    if (level >= 4) return "text-green-600";
+    if (level >= 3) return "text-blue-600";
+    if (level >= 2) return "text-yellow-600";
+    return "text-red-600";
+  };
+
+  const getSkillBgColor = (level) => {
+    if (level >= 4) return "bg-green-100";
+    if (level >= 3) return "bg-blue-100";
+    if (level >= 2) return "bg-yellow-100";
+    return "bg-red-100";
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t.skillPassport}</h2>
+        <button className="btn btn-primary">
+          <Share2 className="h-4 w-4" />
+          Share Profile
+        </button>
       </div>
+
+      {/* User Profile Header - Matching the image design */}
       <div className="card p-6">
-        <p>Skill passport functionality coming soon...</p>
+        <div className="flex items-center gap-6">
+          {/* Profile Avatar */}
+          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+            JD
+          </div>
+          
+          {/* User Info */}
+          <div className="flex-1">
+            <h3 className="text-2xl font-bold text-gray-900">John Doe</h3>
+            <p className="text-lg text-gray-600 mb-2">Level {userStats.level} • {userStats.rank}</p>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Zap className="h-5 w-5 text-yellow-500" />
+                <span className="font-semibold text-lg">{userStats.totalXP} XP</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Flame className="h-5 w-5 text-orange-500" />
+                <span className="font-semibold text-lg">{userStats.streak} Day Streak</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Grid - Matching the image layout */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="card p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm opacity-90">{t.dailyStreak}</p>
+              <p className="text-2xl font-bold">{userStats.streak}</p>
+              <p className="text-xs opacity-75">{t.daysInARow}</p>
+            </div>
+            <Flame className="h-8 w-8 opacity-80" />
+          </div>
+        </div>
+
+        <div className="card p-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm opacity-90">{t.weeklyGoal}</p>
+              <p className="text-2xl font-bold">{userStats.weeklyProgress}</p>
+              <p className="text-xs opacity-75">of {userStats.weeklyGoal} XP</p>
+            </div>
+            <Target className="h-8 w-8 opacity-80" />
+          </div>
+        </div>
+
+        <div className="card p-4 bg-gradient-to-r from-green-500 to-teal-500 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm opacity-90">{t.completedToday}</p>
+              <p className="text-2xl font-bold">{userStats.completedToday}</p>
+              <p className="text-xs opacity-75">activities</p>
+            </div>
+            <CheckCircle className="h-8 w-8 opacity-80" />
+          </div>
+        </div>
+
+        <div className="card p-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm opacity-90">{t.totalXP}</p>
+              <p className="text-2xl font-bold">{userStats.totalXP}</p>
+              <p className="text-xs opacity-75">points earned</p>
+            </div>
+            <Zap className="h-8 w-8 opacity-80" />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Skill Radar */}
+        <div className="card p-6">
+          <h3 className="text-lg font-semibold mb-4">{t.skillRadar}</h3>
+          <div className="space-y-3">
+            {skillData.map((skill, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <div className={`w-12 h-12 rounded-full ${getSkillBgColor(skill.level)} flex items-center justify-center`}>
+                      <span className={`text-lg font-bold ${getSkillColor(skill.level)}`}>
+                        {skill.level.toFixed(1)}
+                      </span>
+                    </div>
+                    {skill.verified && (
+                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
+                        <Check className="h-2 w-2 text-white" />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <div className="font-medium">{skill.skill}</div>
+                    <div className="text-sm text-gray-600">{skill.category}</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  {skill.verified && (
+                    <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">
+                      {t.verified}
+                    </span>
+                  )}
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${getSkillBgColor(skill.level)} ${getSkillColor(skill.level)}`}>
+                    Level {Math.floor(skill.level)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Growth History */}
+        <div className="card p-6">
+          <h3 className="text-lg font-semibold mb-4">{t.growthHistory}</h3>
+          <div className="space-y-3">
+            {growthHistory.map((month, index) => (
+              <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-bold">{month.level}</span>
+                  </div>
+                  <div>
+                    <div className="font-medium">{month.date}</div>
+                    <div className="text-sm text-gray-600">{month.xp} XP</div>
+                  </div>
+                </div>
+                <div>
+                  {month.newSkills.length > 0 && (
+                    <div className="text-sm text-green-600">
+                      +{month.newSkills.join(", ")}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Achievements */}
+      <div className="card p-6">
+        <h3 className="text-lg font-semibold mb-4">{t.achievements}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {achievements.map((achievement) => (
+            <div
+              key={achievement.id}
+              className={`p-4 border rounded-lg text-center ${
+                achievement.unlocked 
+                  ? "bg-white border-gray-200" 
+                  : "bg-gray-50 border-gray-200 opacity-60"
+              }`}
+            >
+              <div className="text-3xl mb-2">{achievement.icon}</div>
+              <div className="font-medium text-sm">{achievement.name}</div>
+              <div className="text-xs text-gray-600 mt-1">{achievement.description}</div>
+              {achievement.unlocked && (
+                <div className="text-xs text-green-600 mt-2">✓ Unlocked</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Stats Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="card p-4 text-center">
+          <div className="text-2xl font-bold text-blue-600">{userStats.verifiedSkills}</div>
+          <div className="text-sm text-gray-600">{t.verifiedSkills}</div>
+        </div>
+        <div className="card p-4 text-center">
+          <div className="text-2xl font-bold text-green-600">{userStats.totalSkills}</div>
+          <div className="text-sm text-gray-600">Total Skills</div>
+        </div>
+        <div className="card p-4 text-center">
+          <div className="text-2xl font-bold text-orange-600">{userStats.streak}</div>
+          <div className="text-sm text-gray-600">{t.dailyStreak}</div>
+        </div>
+        <div className="card p-4 text-center">
+          <div className="text-2xl font-bold text-purple-600">{userStats.topPercentile}%</div>
+          <div className="text-sm text-gray-600">{t.topPercentile}</div>
+        </div>
       </div>
     </div>
   );
