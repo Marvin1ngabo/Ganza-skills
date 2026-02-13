@@ -2,133 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Color Variables */
-:root {
-  /* Primary Action Colors */
-  --electric-cyan: #00FFFF;
-  --neon-blue: #00D4FF;
-  --soft-mint: #4ADEDE;
-  --teal-success: #20B2AA;
-  
-  /* Background Hierarchy */
-  --deep-charcoal: #1A1A1A;
-  --obsidian: #2D2D2D;
-  --slate-grey: #3A3A3A;
-  --muted-grey: #6B7280;
-  
-  /* Functional Colors */
-  --alert-red: #EF4444;
-  --amber-urgent: #F59E0B;
-}
-
 html, body, #root {
   height: 100%;
 }
 
 body {
-  @apply bg-gray-900 text-gray-100;
-  background-color: var(--deep-charcoal);
-  color: #F3F4F6;
+  @apply bg-white text-gray-900;
 }
 
 .card {
-  @apply rounded-xl shadow-sm border;
-  background-color: var(--slate-grey);
-  border-color: var(--obsidian);
+  @apply bg-white rounded-xl shadow-sm border border-gray-300;
 }
 
 .btn {
   @apply inline-flex items-center gap-2 px-3 py-2 rounded-md font-medium transition;
-  background-color: var(--muted-grey);
-  color: #F3F4F6;
-}
-
-.btn:hover {
-  background-color: var(--obsidian);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--electric-cyan), var(--neon-blue));
-  color: #000000;
-  font-weight: 600;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, var(--neon-blue), var(--electric-cyan));
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-  transform: translateY(-1px);
+  @apply bg-black text-white hover:bg-gray-800;
 }
 
 .nav-link {
-  @apply flex items-center gap-2 px-3 py-2 rounded-md transition;
-  color: #D1D5DB;
-}
-
-.nav-link:hover {
-  background-color: var(--obsidian);
-  color: #F3F4F6;
+  @apply flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 transition;
 }
 
 .nav-link-active {
-  background: linear-gradient(135deg, var(--electric-cyan), var(--neon-blue));
-  color: #000000;
-  font-weight: 600;
-}
-
-/* Skill Radar Specific Colors */
-.skill-radar-active {
-  background: linear-gradient(135deg, var(--electric-cyan), var(--neon-blue));
-  color: #000000;
-}
-
-.skill-radar-inactive {
-  background-color: var(--muted-grey);
-  color: #9CA3AF;
-}
-
-.verified-badge {
-  background: linear-gradient(135deg, var(--soft-mint), var(--teal-success));
-  color: #000000;
-}
-
-.locked-skill {
-  background-color: var(--muted-grey);
-  color: #6B7280;
-}
-
-.urgent-alert {
-  background: linear-gradient(135deg, var(--alert-red), var(--amber-urgent));
-  color: #FFFFFF;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-/* Progress Bars */
-.progress-fill {
-  background: linear-gradient(90deg, var(--electric-cyan), var(--neon-blue));
-}
-
-.progress-background {
-  background-color: var(--muted-grey);
-}
-
-/* Stats Cards */
-.stats-gradient-cyan {
-  background: linear-gradient(135deg, var(--electric-cyan), var(--neon-blue));
-  color: #000000;
-}
-
-.stats-gradient-mint {
-  background: linear-gradient(135deg, var(--soft-mint), var(--teal-success));
-  color: #000000;
-}
-
-.stats-gradient-grey {
-  background: linear-gradient(135deg, var(--muted-grey), var(--obsidian));
-  color: #F3F4F6;
+  @apply bg-gray-200 text-gray-900;
 }
