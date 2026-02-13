@@ -1,5 +1,9 @@
 import { useMemo, useState } from "react";
-import { LayoutDashboard, Table2, Users, GraduationCap, Globe, Building, Plus, Edit2, Trash2, Save, X, Brain, Target, Shield, BookOpen, BarChart3, TestTube } from "lucide-react";
+import { 
+  LayoutDashboard, Table2, Users, GraduationCap, Globe, Building, Plus, Edit2, Trash2, Save, X, Brain, Target, Shield, BookOpen, BarChart3, TestTube,
+  User, Search, Code, Activity, Clock, Star, Info, Play, Copy, Trash, Eye, ChevronLeft, ChevronRight,
+  Zap, Flame, Award, CheckCircle, TrendingUp, Share2, Check
+} from "lucide-react";
 import { departments, skills, employees, computeSkillGaps } from "./data/mockData.js";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
