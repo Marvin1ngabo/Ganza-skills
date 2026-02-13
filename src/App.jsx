@@ -69,7 +69,43 @@ const TEXTS = {
     skillMatrix: "Skill Matrix",
     assessmentResults: "Assessment Results",
     testHistory: "Test History",
-    performanceMetrics: "Performance Metrics"
+    performanceMetrics: "Performance Metrics",
+    adminDashboard: "Admin Dashboard",
+    totalUsers: "Total Users",
+    activeUsers: "Active Users",
+    totalCourses: "Total Courses",
+    completionRate: "Completion Rate",
+    averageScore: "Average Score",
+    topPerformingCourses: "Top Performing Courses",
+    strugglingDepartments: "Struggling Departments",
+    recentActivity: "Recent Activity",
+    userManagement: "User Management",
+    courseManagement: "Course Management",
+    bulkActions: "Bulk Actions",
+    enrollUsers: "Enroll Users",
+    removeUsers: "Remove Users",
+    exportData: "Export Data",
+    importUsers: "Import Users",
+    userActivity: "User Activity",
+    courseProgress: "Course Progress",
+    departmentAnalytics: "Department Analytics",
+    skillTrends: "Skill Trends",
+    enrollmentStats: "Enrollment Statistics",
+    completionStats: "Completion Statistics",
+    performanceAlerts: "Performance Alerts",
+    auditLog: "Audit Log",
+    systemSettings: "System Settings",
+    notifications: "Notifications",
+    reports: "Reports",
+    analytics: "Analytics",
+    courses: "Courses",
+    enrollments: "Enrollments",
+    completions: "Completions",
+    performance: "Performance",
+    trends: "Trends",
+    alerts: "Alerts",
+    settings: "Settings",
+    logs: "Logs"
   },
   rw: {
     dashboard: "Ibibaho",
@@ -136,7 +172,43 @@ const TEXTS = {
     skillMatrix: "Imbonerahamwe y'Ubumenyi",
     assessmentResults: "Ibisubizo by'Ugerageza",
     testHistory: "Amateka y'Ugerageza",
-    performanceMetrics: "ibipimo by'akazi"
+    performanceMetrics: "ibipimo by'akazi",
+    adminDashboard: "Ibibaho bya Muyobozi",
+    totalUsers: "Umubare w'Abakoresha",
+    activeUsers: "Abakoresha Bari Active",
+    totalCourses: "Umubare w'Amasomo",
+    completionRate: "Uwihangiro",
+    averageScore: "Mwangavu",
+    topPerformingCourses: "Amasomo Akora Nea",
+    strugglingDepartments: "Amashami Afite Ikibazo",
+    recentActivity: "Ibikorwa bya Vuba",
+    userManagement: "Ukuyobora Abakoresha",
+    courseManagement: "Ukuyobora Amasomo",
+    bulkActions: "Ibikorwa byinshi",
+    enrollUsers: "Shyiramo Abakoresha",
+    removeUsers: "Kuraho Abakoresha",
+    exportData: "Kohereza Ibyatanzwe",
+    importUsers: "Kuzana Abakoresha",
+    userActivity: "Imikorere y'Abakoresha",
+    courseProgress: "Aho Amasomo Ageze",
+    departmentAnalytics: "Ibyakuriye Amashami",
+    skillTrends: "Imihindagurikire y'Ubumenyi",
+    enrollmentStats: "Imibare y'Ishyirwa muri Masomo",
+    completionStats: "Imibare y'Ikizwa",
+    performanceAlerts: "Iburabuzi ry'Akazi",
+    auditLog: "Urutonde r'Imikorere",
+    systemSettings: "Igenamigambi rya Sisitemu",
+    notifications: "Amamenyesho",
+    reports: "Icyegeranyo",
+    analytics: "Ibyakuriye",
+    courses: "Amasomo",
+    enrollments: "Ishyirwa muri Masomo",
+    completions: "Ikizwa",
+    performance: "Akazi",
+    trends: "Imihindagurikire",
+    alerts: "Iburabuzi",
+    settings: "Igenamigambi",
+    logs: "Imikorere"
   }
 };
 
@@ -152,12 +224,17 @@ function Sidebar({ current, onNavigate, t, isAdmin }) {
   
   if (isAdmin) {
     links.push(
+      { key: "adminDashboard", label: t.adminDashboard, icon: BarChart3 },
+      { key: "userManagement", label: t.userManagement, icon: Users },
+      { key: "courseManagement", label: t.courseManagement, icon: BookOpen },
       { key: "employeeManagement", label: t.employeeManagement, icon: Users },
       { key: "departmentManagement", label: t.departmentManagement, icon: Building },
       { key: "skillsManagement", label: t.skillsManagement, icon: GraduationCap },
       { key: "integrations", label: t.integrations, icon: Shield },
       { key: "contentLibrary", label: t.contentLibrary, icon: BookOpen },
-      { key: "benchmarking", label: t.benchmarking, icon: Target }
+      { key: "benchmarking", label: t.benchmarking, icon: Target },
+      { key: "reports", label: t.reports, icon: BarChart3 },
+      { key: "auditLog", label: t.auditLog, icon: Shield }
     );
   }
   
@@ -1478,178 +1555,408 @@ function ContentLibrary({ t }) {
 }
 
 function Benchmarking({ t }) {
-  const [benchmarkType, setBenchmarkType] = useState("industry");
-  const [selectedSkill, setSelectedSkill] = useState("");
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.benchmarking}</h2>
+      </div>
+      <div className="card p-6">
+        <p>Benchmarking functionality coming soon...</p>
+      </div>
+    </div>
+  );
+}
 
-  const industryData = [
-    {
-      skill: "JavaScript",
-      companyScore: 3.8,
-      industryAverage: 3.2,
-      industryTop10: 4.5,
-      percentile: 75,
-      trend: "improving"
-    },
-    {
-      skill: "Python",
-      companyScore: 2.9,
-      industryAverage: 3.5,
-      industryTop10: 4.2,
-      percentile: 45,
-      trend: "stable"
-    },
-    {
-      skill: "Leadership",
-      companyScore: 4.1,
-      industryAverage: 3.0,
-      industryTop10: 4.4,
-      percentile: 85,
-      trend: "leading"
-    },
-    {
-      skill: "Data Analysis",
-      companyScore: 3.3,
-      industryAverage: 2.8,
-      industryTop10: 3.9,
-      percentile: 70,
-      trend: "improving"
-    }
-  ];
-
-  const getPercentileColor = (percentile) => {
-    if (percentile >= 90) return "text-green-600";
-    if (percentile >= 75) return "text-blue-600";
-    if (percentile >= 50) return "text-yellow-600";
-    return "text-red-600";
+function AdminDashboard({ t, employees, departments, skillsList }) {
+  const [timeRange, setTimeRange] = useState("30d");
+  
+  const dashboardStats = {
+    totalUsers: employees.length,
+    activeUsers: Math.floor(employees.length * 0.85),
+    totalCourses: 12,
+    completionRate: 78.5,
+    averageScore: 3.4
   };
 
-  const getTrendIcon = (trend) => {
-    switch (trend) {
-      case "improving": return "📈";
-      case "stable": return "➡️";
-      case "leading": return "🏆";
-      case "declining": return "📉";
-      default: return "➡️";
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.adminDashboard}</h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="card p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">{t.totalUsers}</p>
+              <p className="text-2xl font-bold">{dashboardStats.totalUsers}</p>
+            </div>
+            <Users className="h-8 w-8 text-gray-400" />
+          </div>
+        </div>
+
+        <div className="card p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">{t.activeUsers}</p>
+              <p className="text-2xl font-bold">{dashboardStats.activeUsers}</p>
+            </div>
+            <Brain className="h-8 w-8 text-gray-400" />
+          </div>
+        </div>
+
+        <div className="card p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">{t.completionRate}</p>
+              <p className="text-2xl font-bold">{dashboardStats.completionRate}%</p>
+            </div>
+            <Target className="h-8 w-8 text-gray-400" />
+          </div>
+        </div>
+
+        <div className="card p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">{t.averageScore}</p>
+              <p className="text-2xl font-bold">{dashboardStats.averageScore}</p>
+            </div>
+            <BarChart3 className="h-8 w-8 text-gray-400" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function UserManagement({ t, employees, setEmployees, departments }) {
+  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [showAddUser, setShowAddUser] = useState(false);
+  const [newUser, setNewUser] = useState({
+    name: "",
+    email: "",
+    department: "",
+    role: "employee"
+  });
+
+  const handleAddUser = () => {
+    const newEmployee = {
+      id: Math.max(...employees.map(e => e.id)) + 1,
+      ...newUser,
+      scores: {}
+    };
+    setEmployees(prev => [...prev, newEmployee]);
+    setNewUser({ name: "", email: "", department: "", role: "employee" });
+    setShowAddUser(false);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t.userManagement}</h2>
+        <button
+          onClick={() => setShowAddUser(true)}
+          className="btn btn-primary"
+        >
+          <Plus className="h-4 w-4" />
+          Add User
+        </button>
+      </div>
+
+      <div className="card p-6">
+        <p>User management functionality with bulk operations coming soon...</p>
+      </div>
+
+      {showAddUser && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md">
+            <h3 className="text-lg font-semibold mb-4">Add New User</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Name</label>
+                <input
+                  type="text"
+                  value={newUser.name}
+                  onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Department</label>
+                <select
+                  value={newUser.department}
+                  onChange={(e) => setNewUser({ ...newUser, department: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  <option value="">Select Department</option>
+                  {departments.map(dept => (
+                    <option key={dept.name} value={dept.name}>{dept.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                onClick={() => setShowAddUser(false)}
+                className="btn"
+              >
+                {t.cancel}
+              </button>
+              <button
+                onClick={handleAddUser}
+                className="btn btn-primary"
+                disabled={!newUser.name || !newUser.department}
+              >
+                {t.save}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CourseManagement({ t }) {
+  const [courses, setCourses] = useState([
+    {
+      id: 1,
+      name: "JavaScript Fundamentals",
+      description: "Learn the basics of JavaScript programming",
+      enrolled: 45,
+      completed: 32,
+      avgScore: 4.2,
+      status: "active",
+      category: "Technical"
+    },
+    {
+      id: 2,
+      name: "Leadership Excellence",
+      description: "Develop essential leadership skills",
+      enrolled: 38,
+      completed: 25,
+      avgScore: 3.9,
+      status: "active",
+      category: "Soft Skills"
+    },
+    {
+      id: 3,
+      name: "Data Analysis Basics",
+      description: "Introduction to data analysis techniques",
+      enrolled: 32,
+      completed: 20,
+      avgScore: 3.7,
+      status: "active",
+      category: "Technical"
+    },
+    {
+      id: 4,
+      name: "Python Programming",
+      description: "Comprehensive Python programming course",
+      enrolled: 28,
+      completed: 15,
+      avgScore: 3.5,
+      status: "inactive",
+      category: "Technical"
+    }
+  ]);
+
+  const [showAddCourse, setShowAddCourse] = useState(false);
+  const [newCourse, setNewCourse] = useState({
+    name: "",
+    description: "",
+    category: "Technical"
+  });
+
+  const handleAddCourse = () => {
+    const course = {
+      id: Math.max(...courses.map(c => c.id)) + 1,
+      ...newCourse,
+      enrolled: 0,
+      completed: 0,
+      avgScore: 0,
+      status: "active"
+    };
+    setCourses(prev => [...prev, course]);
+    setNewCourse({ name: "", description: "", category: "Technical" });
+    setShowAddCourse(false);
+  };
+
+  const getStatusColor = (status) => {
+    return status === "active" 
+      ? "bg-green-100 text-green-800" 
+      : "bg-gray-100 text-gray-800";
+  };
+
+  const getCategoryColor = (category) => {
+    switch (category) {
+      case "Technical": return "bg-blue-100 text-blue-800";
+      case "Soft Skills": return "bg-purple-100 text-purple-800";
+      case "Management": return "bg-orange-100 text-orange-800";
+      default: return "bg-gray-100 text-gray-800";
     }
   };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">{t.benchmarking}</h2>
-        <select
-          value={benchmarkType}
-          onChange={(e) => setBenchmarkType(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md"
+        <h2 className="text-xl font-semibold">{t.courseManagement}</h2>
+        <button
+          onClick={() => setShowAddCourse(true)}
+          className="btn btn-primary"
         >
-          <option value="industry">{t.industryComparison}</option>
-          <option value="internal">Internal Comparison</option>
-          <option value="historical">Historical Performance</option>
-        </select>
+          <Plus className="h-4 w-4" />
+          Add Course
+        </button>
       </div>
 
-      <div className="card p-6">
-        <h3 className="text-lg font-semibold mb-4">{t.industryComparison}</h3>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Select Skill</label>
-          <select
-            value={selectedSkill}
-            onChange={(e) => setSelectedSkill(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-          >
-            <option value="">All Skills</option>
-            {industryData.map((data) => (
-              <option key={data.skill} value={data.skill}>{data.skill}</option>
-            ))}
-          </select>
+      {/* Course Statistics */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="card p-4">
+          <div className="text-center">
+            <p className="text-2xl font-bold">{courses.length}</p>
+            <p className="text-sm text-gray-600">{t.totalCourses}</p>
+          </div>
         </div>
-
-        <div className="overflow-auto">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr>
-                <th className="text-left p-3 border-b">Skill</th>
-                <th className="text-left p-3 border-b">Your Score</th>
-                <th className="text-left p-3 border-b">Industry Avg</th>
-                <th className="text-left p-3 border-b">Top 10%</th>
-                <th className="text-left p-3 border-b">Percentile</th>
-                <th className="text-left p-3 border-b">Trend</th>
-              </tr>
-            </thead>
-            <tbody>
-              {industryData
-                .filter(data => !selectedSkill || data.skill === selectedSkill)
-                .map((data, index) => (
-                  <tr key={index} className="border-b">
-                    <td className="p-3 font-medium">{data.skill}</td>
-                    <td className="p-3">
-                      <div className={`rounded-md text-center text-sm px-2 py-1 inline-block ${
-                        data.companyScore <= 1 ? "bg-red-500 text-white" :
-                        data.companyScore <= 2 ? "bg-orange-500 text-white" :
-                        data.companyScore <= 3 ? "bg-yellow-400 text-gray-900" :
-                        data.companyScore <= 4 ? "bg-green-400 text-gray-900" :
-                        "bg-green-600 text-white"
-                      }`}>
-                        {data.companyScore}
-                      </div>
-                    </td>
-                    <td className="p-3">
-                      <div className={`rounded-md text-center text-sm px-2 py-1 inline-block ${
-                        data.industryAverage <= 1 ? "bg-red-500 text-white" :
-                        data.industryAverage <= 2 ? "bg-orange-500 text-white" :
-                        data.industryAverage <= 3 ? "bg-yellow-400 text-gray-900" :
-                        data.industryAverage <= 4 ? "bg-green-400 text-gray-900" :
-                        "bg-green-600 text-white"
-                      }`}>
-                        {data.industryAverage}
-                      </div>
-                    </td>
-                    <td className="p-3">
-                      <div className={`rounded-md text-center text-sm px-2 py-1 inline-block ${
-                        data.industryTop10 <= 1 ? "bg-red-500 text-white" :
-                        data.industryTop10 <= 2 ? "bg-orange-500 text-white" :
-                        data.industryTop10 <= 3 ? "bg-yellow-400 text-gray-900" :
-                        data.industryTop10 <= 4 ? "bg-green-400 text-gray-900" :
-                        "bg-green-600 text-white"
-                      }`}>
-                        {data.industryTop10}
-                      </div>
-                    </td>
-                    <td className="p-3">
-                      <span className={`font-bold ${getPercentileColor(data.percentile)}`}>
-                        {data.percentile}th
-                      </span>
-                    </td>
-                    <td className="p-3">
-                      <span className="text-lg">{getTrendIcon(data.trend)}</span>
-                      <span className="ml-2 text-sm capitalize">{data.trend}</span>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+        <div className="card p-4">
+          <div className="text-center">
+            <p className="text-2xl font-bold">{courses.reduce((sum, c) => sum + c.enrolled, 0)}</p>
+            <p className="text-sm text-gray-600">Total Enrolled</p>
+          </div>
         </div>
-
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <h4 className="font-semibold mb-2">Key Insights</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <div className="font-medium text-green-600">Strengths:</div>
-              <ul className="mt-1 space-y-1">
-                <li>• Leadership skills in top 15% globally</li>
-                <li>• Above industry average in 3 out of 4 skills</li>
-              </ul>
-            </div>
-            <div>
-              <div className="font-medium text-orange-600">Areas for Improvement:</div>
-              <ul className="mt-1 space-y-1">
-                <li>• Python skills below industry average</li>
-                <li>• Data analysis room for growth</li>
-              </ul>
-            </div>
+        <div className="card p-4">
+          <div className="text-center">
+            <p className="text-2xl font-bold">{courses.reduce((sum, c) => sum + c.completed, 0)}</p>
+            <p className="text-sm text-gray-600">Total Completed</p>
+          </div>
+        </div>
+        <div className="card p-4">
+          <div className="text-center">
+            <p className="text-2xl font-bold">
+              {(courses.reduce((sum, c) => sum + c.completed, 0) / courses.reduce((sum, c) => sum + c.enrolled, 0) * 100).toFixed(1)}%
+            </p>
+            <p className="text-sm text-gray-600">{t.completionRate}</p>
           </div>
         </div>
       </div>
+
+      {/* Courses Table */}
+      <div className="card overflow-auto">
+        <table className="min-w-full border-collapse">
+          <thead>
+            <tr>
+              <th className="text-left p-3 border-b">Course Name</th>
+              <th className="text-left p-3 border-b">Category</th>
+              <th className="text-left p-3 border-b">Enrolled</th>
+              <th className="text-left p-3 border-b">Completed</th>
+              <th className="text-left p-3 border-b">Avg Score</th>
+              <th className="text-left p-3 border-b">Status</th>
+              <th className="text-left p-3 border-b">{t.actions}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {courses.map((course) => (
+              <tr key={course.id} className="border-b">
+                <td className="p-3">
+                  <div>
+                    <div className="font-medium">{course.name}</div>
+                    <div className="text-sm text-gray-600">{course.description}</div>
+                  </div>
+                </td>
+                <td className="p-3">
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${getCategoryColor(course.category)}`}>
+                    {course.category}
+                  </span>
+                </td>
+                <td className="p-3">{course.enrolled}</td>
+                <td className="p-3">{course.completed}</td>
+                <td className="p-3">
+                  <div className={`rounded-md text-center text-sm px-2 py-1 inline-block ${
+                    course.avgScore <= 1 ? "bg-red-500 text-white" :
+                    course.avgScore <= 2 ? "bg-orange-500 text-white" :
+                    course.avgScore <= 3 ? "bg-yellow-400 text-gray-900" :
+                    course.avgScore <= 4 ? "bg-green-400 text-gray-900" :
+                    "bg-green-600 text-white"
+                  }`}>
+                    {course.avgScore}
+                  </div>
+                </td>
+                <td className="p-3">
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(course.status)}`}>
+                    {course.status}
+                  </span>
+                </td>
+                <td className="p-3">
+                  <div className="flex gap-2">
+                    <button className="btn" title="Edit">
+                      <Edit2 className="h-4 w-4" />
+                    </button>
+                    <button className="btn text-red-600 hover:text-red-800" title="Delete">
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Add Course Modal */}
+      {showAddCourse && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md">
+            <h3 className="text-lg font-semibold mb-4">Add New Course</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Course Name</label>
+                <input
+                  type="text"
+                  value={newCourse.name}
+                  onChange={(e) => setNewCourse({ ...newCourse, name: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Description</label>
+                <textarea
+                  value={newCourse.description}
+                  onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  rows={3}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Category</label>
+                <select
+                  value={newCourse.category}
+                  onChange={(e) => setNewCourse({ ...newCourse, category: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  <option value="Technical">Technical</option>
+                  <option value="Soft Skills">Soft Skills</option>
+                  <option value="Management">Management</option>
+                </select>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                onClick={() => setShowAddCourse(false)}
+                className="btn"
+              >
+                {t.cancel}
+              </button>
+              <button
+                onClick={handleAddCourse}
+                className="btn btn-primary"
+                disabled={!newCourse.name}
+              >
+                {t.save}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1670,8 +1977,11 @@ export default function App() {
         <div className="flex items-center justify-between">
           <div className="text-2xl font-semibold text-gray-900">
             {page === "dashboard" && t.dashboard}
+            {page === "adminDashboard" && t.adminDashboard}
             {page === "skillsMatrix" && t.skillsMatrix}
             {page === "employeeDirectory" && t.employeeDirectory}
+            {page === "userManagement" && t.userManagement}
+            {page === "courseManagement" && t.courseManagement}
             {page === "employeeManagement" && t.employeeManagement}
             {page === "learningPaths" && t.learningPaths}
             {page === "departmentManagement" && t.departmentManagement}
@@ -1681,6 +1991,8 @@ export default function App() {
             {page === "integrations" && t.integrations}
             {page === "contentLibrary" && t.contentLibrary}
             {page === "benchmarking" && t.benchmarking}
+            {page === "reports" && t.reports}
+            {page === "auditLog" && t.auditLog}
           </div>
           <div className="flex items-center gap-3">
             {isAdmin && (
@@ -1704,6 +2016,9 @@ export default function App() {
           </div>
         </div>
         {page === "dashboard" && <Dashboard t={t} />}
+        {page === "adminDashboard" && <AdminDashboard t={t} employees={employeesState} departments={departmentsState} skillsList={skillsState} />}
+        {page === "userManagement" && <UserManagement t={t} employees={employeesState} setEmployees={setEmployeesState} departments={departmentsState} />}
+        {page === "courseManagement" && <CourseManagement t={t} />}
         {page === "skillsMatrix" && <SkillsMatrix t={t} />}
         {page === "employeeDirectory" && <EmployeeDirectory t={t} />}
         {page === "employeeManagement" && (
@@ -1742,6 +2057,8 @@ export default function App() {
         {page === "integrations" && <Integrations t={t} />}
         {page === "contentLibrary" && <ContentLibrary t={t} />}
         {page === "benchmarking" && <Benchmarking t={t} />}
+        {page === "reports" && <div className="card p-6"><p>Reports functionality coming soon...</p></div>}
+        {page === "auditLog" && <div className="card p-6"><p>Audit log functionality coming soon...</p></div>}
       </main>
     </div>
   );
