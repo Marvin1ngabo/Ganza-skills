@@ -7,6 +7,7 @@ import {
 import { departments, skills, employees, computeSkillGaps } from "./data/mockData.js";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import LandingPage from "./LandingPage.jsx";
+import OrganicDashboard from "./OrganicDashboard.jsx";
 
 const TEXTS = {
   en: {
@@ -318,6 +319,7 @@ const TEXTS = {
 function Sidebar({ current, onNavigate, t, isAdmin }) {
   const userLinks = [
     { key: "skillPassport", label: t.skillPassport, icon: User },
+    { key: "organicDashboard", label: "Organic Dashboard", icon: Brain },
     { key: "discovery", label: t.discovery, icon: Search },
     { key: "activityFeed", label: t.activityFeed, icon: Activity },
     { key: "practiceSandbox", label: t.practiceSandbox, icon: Code },
@@ -2522,6 +2524,7 @@ export default function App() {
         {page === "discovery" && <Discovery t={t} />}
         {page === "activityFeed" && <ActivityFeed t={t} />}
         {page === "practiceSandbox" && <PracticeSandbox t={t} />}
+        {page === "organicDashboard" && <OrganicDashboard />}
         {page === "dashboard" && <Dashboard t={t} />}
         {page === "adminDashboard" && <AdminDashboard t={t} employees={employeesState} departments={departmentsState} skillsList={skillsState} />}
         {page === "userManagement" && <UserManagement t={t} employees={employeesState} setEmployees={setEmployeesState} departments={departmentsState} />}
