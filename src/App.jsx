@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { departments, skills, employees, computeSkillGaps } from "./data/mockData.js";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import LandingPage from "./LandingPage.jsx";
 
 const TEXTS = {
   en: {
@@ -2435,11 +2436,31 @@ function PracticeSandbox({ t }) {
 export default function App() {
   const [lang, setLang] = useState("en");
   const t = TEXTS[lang];
-  const [page, setPage] = useState("skillPassport");
+  const [page, setPage] = useState("landing");
   const [isAdmin, setIsAdmin] = useState(false); // Start as normal user
   const [departmentsState, setDepartmentsState] = useState(departments);
   const [employeesState, setEmployeesState] = useState(employees);
   const [skillsState, setSkillsState] = useState(skills);
+
+  // Show landing page if not logged in
+  if (page === "landing") {
+    return (
+      <div>
+        <LandingPage onLogin={() => setPage("skillPassport")} />
+        <div className="fixed top-4 right-4 z-50">
+          <button
+            className="btn"
+            onClick={() => setLang(lang === "en" ? "rw" : "en")}
+            aria-label="Toggle language"
+            title="Toggle language"
+          >
+            <Globe className="h-5 w-5 text-gray-600" />
+            <span className="text-gray-800 font-medium">{t.language}</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-full flex">
@@ -2487,6 +2508,13 @@ export default function App() {
             >
               <Globe className="h-5 w-5 text-gray-600" />
               <span className="text-gray-800 font-medium">{t.language}</span>
+            </button>
+            <button
+              className="btn"
+              onClick={() => setPage("landing")}
+              title="Back to Landing"
+            >
+              <span className="text-gray-800 font-medium">Logout</span>
             </button>
           </div>
         </div>
